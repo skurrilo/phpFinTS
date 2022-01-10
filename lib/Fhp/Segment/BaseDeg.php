@@ -44,6 +44,20 @@ abstract class BaseDeg implements \Serializable
     }
 
     /**
+     * PHP 8.1 new Serializable
+     * Just call old functions
+     */
+    public function __serialize(): string
+    {
+        return $this->serialize();
+    }
+
+    public function __unserialize($serialized)
+    {
+        $this->unserialize($serialized);
+    }
+
+    /**
      * Short-hand for {@link Serializer::serializeDeg()}.
      * @return string The HBCI wire format representation of this DEG.
      */

@@ -49,6 +49,20 @@ final class AnonymousSegment extends BaseSegment implements \Serializable
         // Do nothing, anonymous segments are always valid.
     }
 
+    /**
+     * PHP 8.1 new Serializable
+     * Just call old functions
+     */
+    public function __serialize(): string
+    {
+        return $this->serialize();
+    }
+
+    public function __unserialize($serialized)
+    {
+        $this->unserialize($serialized);
+    }
+
     public function serialize(): string
     {
         return $this->segmentkopf->serialize() . Delimiter::ELEMENT .
